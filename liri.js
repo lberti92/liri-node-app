@@ -6,7 +6,7 @@ var moment = require("moment");
 var fs = require("fs");
 
 var activity = process.argv[2] || "bad";
-var value = process.argv.slice(3).join("+");
+var value = process.argv.slice(3).join(" ");
 var divider = "\n------------------------------------------------------------\n";
 
 function movie() {
@@ -35,7 +35,7 @@ function movie() {
         "Plot: " + jsonData.Plot
       )
 
-      fs.appendFile("log.txt", movieData.join("\n"), function (err) {
+      fs.appendFile("log.txt", movieData.join("\n") + divider, function (err) {
         if (err) throw err;
       })
       console.log(movieData.join("\n"));
@@ -76,7 +76,6 @@ function music() {
   var Spotify = require('node-spotify-api');
 
   var spotify = new Spotify(keys.spotify);
-  var value = process.argv.slice(3).join(" ");
 
   if (!value) {
     value = "The Sign";
@@ -120,7 +119,9 @@ function doAnything() {
     }
     var dataArr = data.split(",");
     activity = dataArr[0];
+    console.log(activity);
     value = dataArr[1];
+    console.log(value);
 
     switchFunc(activity, value);
   })
