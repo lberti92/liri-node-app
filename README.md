@@ -1,5 +1,5 @@
 # liri-node-app
-Week 10 (LIRI Bot) Assignment
+Homework 10 (LIRI Bot) Assignment
 
 The challenge was to use Node JS to create a LIRI bot.  LIRI is like iPhone's SIRI.  However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI  is a _Language_Interpretation and Recognition Interface.  LIRI is a command line node app that takes in parameters and returns data based on one of four commands:
 
