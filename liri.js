@@ -7,6 +7,7 @@ var fs = require("fs");
 
 var activity = process.argv[2] || "bad";
 var value = process.argv.slice(3).join("+");
+var divider = "\n------------------------------------------------------------\n";
 
 function movie() {
 
@@ -34,7 +35,7 @@ function movie() {
         "Plot: " + jsonData.Plot
       )
 
-      fs.appendFile("log.txt", movieData.join(" "), function (err) {
+      fs.appendFile("log.txt", movieData.join("\n"), function (err) {
         if (err) throw err;
       })
       console.log(movieData.join("\n"));
@@ -57,10 +58,10 @@ function artist() {
 
         var concertData = [
           jsonData[i].venue.city + ", " + jsonData[i].venue.region + " " + jsonData[i].venue.country + " at " +
-          jsonData[i].venue.name + " " + moment(jsonData[i].datetime).format("dddd, MMMM Do YYYY, h:mm:ss a")
+          jsonData[i].venue.name + " on " + moment(jsonData[i].datetime).format("dddd, MMMM Do YYYY, h:mm:ss a")
         ].join("\n");
 
-        fs.appendFile("log.txt", concertData, function (err) {
+        fs.appendFile("log.txt", concertData + divider, function (err) {
           if (err) throw err;
         })
         console.log(concertData);
@@ -81,11 +82,10 @@ function music() {
     value = "The Sign";
   }
   spotify
-    .search({ type: 'track', query: value, limit: 1 })
+    .search({ type: 'track', query: value, limit: 10 })
     .then(function (response) {
 
       var jsonData = response.tracks.items;
-      var divider = "\n------------------------------------------------------------\n\n";
 
       for (var i = 0; i < jsonData.length; i++) {
 
@@ -102,7 +102,7 @@ function music() {
           "Preview song: " + jsonData[i].album.external_urls.spotify,
           "Album: " + jsonData[i].album.name,
         )
-        fs.appendFile("log.txt", songData.join(" ") + divider, function (err) {
+        fs.appendFile("log.txt", songData.join("\n") + divider, function (err) {
           if (err) throw err;
         })
         console.log(songData.join("\n") + divider);
