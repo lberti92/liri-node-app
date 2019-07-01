@@ -53,7 +53,7 @@ The challenge was to use Node JS to create a LIRI bot.  LIRI is like iPhone's SI
 
 
 ##Video(GIF) of LIRI BOT
-![Gif of LIRI BOT](LIRIBOT.gif)
+![Gif of LIRI BOT](https://github.com/lberti92/liri-node-app/blob/master/LIRI%20Bot.gif)
 
 ## Tech used
 - Node.js
